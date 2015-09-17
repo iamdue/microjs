@@ -39,6 +39,7 @@ THE SOFTWARE.*/
 
     u.find = document.querySelector.bind(document);
     u.findAll = document.querySelectorAll.bind(document);
+    u.make = document.createElement.bind(document);
 
     HTMLElement.prototype.find = function(s) {
         return this.querySelector(s);
@@ -48,16 +49,26 @@ THE SOFTWARE.*/
         return this.querySelectorAll(s);
     };
 
+    HTMLElement.prototype.hasClass = function(c) {
+        var classes = this.className.split(" ");
+        return classes.indexOf(c) > -1;
+    }
+
     HTMLElement.prototype.addClass = function(c) {
-        this.classList.add(c);
+        var classes = this.className.split(" ");
+        classes.append(classes.indexOf(c) === -1 ? c : "");
+        this.className = classes.join(" ");
     };
 
     HTMLElement.prototype.removeClass = function(c) {
-        this.classList.remove(c);
+        var classes = this.className.split(" "),
+            index = classes.indexOf(c);
+        this.className = (index > -1 ? classes.splice(index, 1) : classes).join(" ");
     };
 
     HTMLElement.prototype.toggleClass = function(c) {
-        this.classList.toggle(c);
+        if (this.hasClass(c)) this.removeClass(c);
+        else this.addClass(c);
     };
 
     HTMLFormElement.prototype.serialize = function() {

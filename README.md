@@ -40,6 +40,19 @@ u.findAll("div").toArray().forEach(function(div) {
 });
 ```
 
+### make
+
+```javascript
+var div = u.make("div");
+u.find("body").appendChild(div);
+```
+
+### hasClass
+
+```javascript
+u.find(".my-class").hasClass("my-class") === true;
+```
+
 ### addClass
 
 ```javascript
@@ -72,6 +85,13 @@ u.find("form#my-form").serialize().forEach(function(field) {
 u.findAll("div").toArray().forEach(function(div) {
     div.onclick = myAction;
 });
+```
+
+### getParameter
+
+```javascript
+// Get query parameter.
+u.getParameter("q");
 ```
 
 ## Users
