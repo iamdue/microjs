@@ -56,7 +56,7 @@ THE SOFTWARE.*/
 
     HTMLElement.prototype.addClass = function(c) {
         var classes = this.className.split(" ");
-        classes.append(classes.indexOf(c) === -1 ? c : "");
+        classes.push(classes.indexOf(c) === -1 ? c : "");
         this.className = classes.join(" ");
     };
 
