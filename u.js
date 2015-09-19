@@ -52,23 +52,27 @@ THE SOFTWARE.*/
     HTMLElement.prototype.hasClass = function(c) {
         var classes = this.className.split(" ");
         return classes.indexOf(c) > -1;
+        return this;
     }
 
     HTMLElement.prototype.addClass = function(c) {
         var classes = this.className.split(" ");
         classes.push(classes.indexOf(c) === -1 ? c : "");
         this.className = classes.join(" ");
+        return this;
     };
 
     HTMLElement.prototype.removeClass = function(c) {
         var classes = this.className.split(" "),
             index = classes.indexOf(c);
         this.className = (index > -1 ? classes.splice(index, 1) : classes).join(" ");
+        return this;
     };
 
     HTMLElement.prototype.toggleClass = function(c) {
         if (this.hasClass(c)) this.removeClass(c);
         else this.addClass(c);
+        return this;
     };
 
     HTMLFormElement.prototype.serialize = function() {
