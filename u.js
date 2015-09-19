@@ -65,7 +65,9 @@ THE SOFTWARE.*/
     HTMLElement.prototype.removeClass = function(c) {
         var classes = this.className.split(" "),
             index = classes.indexOf(c);
-        this.className = (index > -1 ? classes.splice(index, 1) : classes).join(" ");
+        if (index > -1)
+            classes.splice(index, 1);
+        this.className = classes.join(" ");
         return this;
     };
 
